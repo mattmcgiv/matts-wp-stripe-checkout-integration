@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Matt's Add-ons
+Plugin Name: Matt's Stripe Checkout Integration
 Plugin URI:  http://antym.com
 Description: Adds some features to the site.
 Version:     .6
@@ -19,3 +19,8 @@ function mm_enqueue_scripts_styles() {
 }
 
 add_action('wp_enqueue_scripts', 'mm_enqueue_scripts_styles');
+
+require_once('includes/keys.php');
+require_once('vendor/autoload.php');
+
+\Stripe\Stripe::setApiKey($stripe['secret_key']);
